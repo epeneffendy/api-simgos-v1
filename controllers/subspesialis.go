@@ -22,7 +22,7 @@ type SubspesialisGetAllFormat struct {
 	Spesialis       string
 	Subspesialis    string
 	PoliHfis        string
-	IdGroupLocation int
+	IdGroupLocation string
 }
 
 func FormatSubspesialisGetAllResponse(subs []entity.Subspesialis) []SubspesialisGetAllFormat {

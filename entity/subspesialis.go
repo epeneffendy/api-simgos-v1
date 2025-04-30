@@ -6,5 +6,5 @@ type Subspesialis struct {
 	Spesialis       string `json:"spesialis"`
 	Subspesialis    string `json:"subspesialis"`
 	PoliHfis        string `json:"poli_hfis"`
-	IdGroupLocation int    `json:"id_group_location"`
+	IdGroupLocation string `json:"id_group_location"`
 }

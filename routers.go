@@ -14,12 +14,13 @@ func StartServer(root string) {
 	subSistem := r.Group("/sub-sistem")
 	poliklinik := r.Group("/poliklinik")
 	subspesialis := r.Group("/sub-spesialis")
+	caraBayar := r.Group("/cara-bayar")
+	agama := r.Group("/agama")
 
 	//Pasien Endpoint Handler
 	pasienRepository := repository.NewPasienRepository(db)
 	pasienService := service.NewPasienService(pasienRepository)
 	pasienHandler := controllers.NewPasienHandler(pasienService)
-
 	pasien.GET("/", pasienHandler.GetAllPasien)
 
 	subSistemRepository := repository.NewSubSistemRepository(db)
@@ -31,14 +32,22 @@ func StartServer(root string) {
 	poliklinikRepository := repository.NewPoliklinikRepository(db)
 	poliklinikService := service.NewPoliklinikService(poliklinikRepository)
 	poliklinikHandler := controllers.NewPoliklinikHandler(poliklinikService)
-
 	poliklinik.GET("/:subsistem", poliklinikHandler.GetBySubSistem)
 
-	subspesialisRepository := repository.NewSubspesialisRepository(db)
+	subspesialisRepository := repository.NewSubspesialisRepository(db2)
 	subspesialisService := service.NewSubSpesialisService(subspesialisRepository)
 	subspesialisHandler := controllers.NewSubspesialis(subspesialisService)
-
 	subspesialis.GET("/", subspesialisHandler.GetAll)
+
+	caraBayarRepository := repository.NewCaraBayarRepository(db)
+	caraBayarService := service.NewCaraBayarService(caraBayarRepository)
+	caraBayarHandler := controllers.NewCaraBayarHandler(caraBayarService)
+	caraBayar.GET("/:subsistem", caraBayarHandler.GetAll)
+
+	agamaRepository := repository.NewAgamaRepository(db)
+	agamaService := service.NewAgamaService(agamaRepository)
+	agamaHandler := controllers.NewAgamaHandler(agamaService)
+	agama.GET("/", agamaHandler.GetAll)
 
 	r.Run(root)
 }

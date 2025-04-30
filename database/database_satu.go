@@ -11,11 +11,11 @@ import (
 var DbConnectionSatu *sql.DB
 
 func DbMigrateSatu(db2 *sql.DB) {
-	migrations := &migrate.PackrMigrationSource{
-		Box: packr.New("migrations", "./sql_migration"),
+	migrations_satu := &migrate.PackrMigrationSource{
+		Box: packr.New("migrations", "./sql_satu_migration"),
 	}
 
-	n, err := migrate.Exec(db2, "postgres", migrations, migrate.Up)
+	n, err := migrate.Exec(db2, "postgres", migrations_satu, migrate.Up)
 	if err != nil {
 		log.Fatal(err)
 	}

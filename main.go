@@ -39,7 +39,7 @@ func main() {
 
 	fmt.Println("Successfully make connection to database")
 
-	satuInfo := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
+	satuInfo := fmt.Sprintf("host=%v port=%v user=%v password=%v dbname=%v sslmode=disable",
 		os.Getenv("SATUHOST"),
 		os.Getenv("SATUPORT"),
 		os.Getenv("SATUUSER"),
